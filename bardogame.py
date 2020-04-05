@@ -56,6 +56,7 @@ class Bardogame:
             str2 += str_in + str(hand.loc[i,"CARDS"]) + ".png" + str_fin
         string = str1+str2+str3
         display(HTML(string))
+        str2 = ""
         print("On the table:")
         table = pd.read_sql("SELECT cards FROM TABLE", self.conn)
         for i in range(len(table.CARDS)):
@@ -80,6 +81,7 @@ class Bardogame:
             str2 += str_in + str(hand.loc[i,"CARDS"]) + ".png" + str_fin
         string = str1+str2+str3
         display(HTML(string))
+        str2 = ""
         print("On the table:")
         table = pd.read_sql("SELECT cards FROM TABLE", self.conn)
         for i in range(len(table.CARDS)):
@@ -105,6 +107,7 @@ class Bardogame:
             str2 += str_in + str(hand.loc[i,"CARDS"]) + ".png" + str_fin
         string = str1+str2+str3
         display(HTML(string))
+        str2 = ""
         print("On the table:")
         table = pd.read_sql("SELECT cards FROM TABLE", self.conn)
         for i in range(len(table.CARDS)):
@@ -124,6 +127,7 @@ class Bardogame:
             str2 += str_in + str(hand.loc[i,"CARDS"]) + ".png" + str_fin
         string = str1+str2+str3
         display(HTML(string))
+        str2 = ""
         print("On the table:")
         table = pd.read_sql("SELECT cards FROM TABLE", self.conn)
         for i in range(len(table.CARDS)):
