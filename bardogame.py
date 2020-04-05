@@ -68,7 +68,7 @@ class Bardogame:
         hand = pd.read_sql("SELECT cards FROM " + self.player_name + "_hand", self.conn)
         play_card = hand.loc[hand['CARDS'] == card]
         hand = hand.drop(play_card.index, axis=0)
-        hand.to_sql(self.player_name, con=self.db2, if_exists='replace')
+        hand.to_sql(self.player_name+ "_hand", con=self.db2, if_exists='replace')
         play_card.to_sql('TABLE', con=self.db2, if_exists='append')
         str1 = "<table><tr>"
         str_in = "<td><img src='"
