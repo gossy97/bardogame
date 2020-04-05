@@ -3,7 +3,7 @@ import pandas as pd
 import ibm_db_dbi
 import sqlalchemy
 from PIL import Image
-from IPython.display import display
+from IPython.display import HTML, display
 
 dsn_driver = "IBM DB2 ODBC DRIVER"
 dsn_database = "BLUDB"
@@ -12,7 +12,6 @@ dsn_port = "50000"
 dsn_protocol = "TCPIP"
 dsn_uid = "jrk61454"
 dsn_pwd = "5@3tb6hk2kxdmfbw"
-
 
 class Bardogame:
 
@@ -46,16 +45,23 @@ class Bardogame:
         deck = deck.drop(draw_card.index, axis=0)
         deck.to_sql('deck', con=self.db2, if_exists='replace')
         draw_card.to_sql(self.player_name + "_hand", con=self.db2, if_exists='append')
+        str1 = "<table><tr>"
+        str_in = "<td><img src='"
+        str_fin = "'></td>"
+        str3 = "</tr></table>"
+        str2 = ""
         print("Your hand:")
         hand = pd.read_sql("SELECT cards FROM " + self.player_name + "_hand", self.conn)
         for i in range(len(hand.CARDS)):
-            img = Image.open((str(hand.loc[i,"CARDS"]) + ".png"))
-            display(img)
+            str2 += str_in + str(hand.loc[i,"CARDS"]) + ".png" + str_fin
+        string = str1+str2+str3
+        display(HTML(string))
         print("On the table:")
         table = pd.read_sql("SELECT cards FROM TABLE", self.conn)
         for i in range(len(table.CARDS)):
-            img = Image.open((str(table.loc[i,"CARDS"]) + ".png"))
-            display(img)
+            str2 += str_in + str(table.loc[i,"CARDS"]) + ".png" + str_fin
+        string = str1+str2+str3
+        display(HTML(string))
 
     def play_card(self, card):
         hand = pd.read_sql("SELECT cards FROM " + self.player_name + "_hand", self.conn)
@@ -63,16 +69,23 @@ class Bardogame:
         hand = hand.drop(play_card.index, axis=0)
         hand.to_sql(self.player_name, con=self.db2, if_exists='replace')
         play_card.to_sql('TABLE', con=self.db2, if_exists='append')
+        str1 = "<table><tr>"
+        str_in = "<td><img src='"
+        str_fin = "'></td>"
+        str3 = "</tr></table>"
+        str2 = ""
         print("Your hand:")
         hand = pd.read_sql("SELECT cards FROM " + self.player_name + "_hand", self.conn)
         for i in range(len(hand.CARDS)):
-            img = Image.open((str(hand.loc[i,"CARDS"]) + ".png"))
-            display(img)
+            str2 += str_in + str(hand.loc[i,"CARDS"]) + ".png" + str_fin
+        string = str1+str2+str3
+        display(HTML(string))
         print("On the table:")
         table = pd.read_sql("SELECT cards FROM TABLE", self.conn)
         for i in range(len(table.CARDS)):
-            img = Image.open((str(table.loc[i,"CARDS"]) + ".png"))
-            display(img)
+            str2 += str_in + str(table.loc[i,"CARDS"]) + ".png" + str_fin
+        string = str1+str2+str3
+        display(HTML(string))
 
 
     def win_card(self, card):
@@ -81,28 +94,42 @@ class Bardogame:
         table = table.drop(win_card.index, axis=0)
         table.to_sql('TABLE', con=self.db2, if_exists='replace')
         win_card.to_sql(self.player_name + '_pot', con=self.db2, if_exists='append')
+        str1 = "<table><tr>"
+        str_in = "<td><img src='"
+        str_fin = "'></td>"
+        str3 = "</tr></table>"
+        str2 = ""
         print("Your hand:")
         hand = pd.read_sql("SELECT cards FROM " + self.player_name + "_hand", self.conn)
         for i in range(len(hand.CARDS)):
-            img = Image.open((str(hand.loc[i,"CARDS"]) + ".png"))
-            display(img)
+            str2 += str_in + str(hand.loc[i,"CARDS"]) + ".png" + str_fin
+        string = str1+str2+str3
+        display(HTML(string))
         print("On the table:")
         table = pd.read_sql("SELECT cards FROM TABLE", self.conn)
         for i in range(len(table.CARDS)):
-            img = Image.open((str(table.loc[i,"CARDS"]) + ".png"))
-            display(img)
+            str2 += str_in + str(table.loc[i,"CARDS"]) + ".png" + str_fin
+        string = str1+str2+str3
+        display(HTML(string))
 
     def show(self):
+        str1 = "<table><tr>"
+        str_in = "<td><img src='"
+        str_fin = "'></td>"
+        str3 = "</tr></table>"
+        str2 = ""
         print("Your hand:")
         hand = pd.read_sql("SELECT cards FROM " + self.player_name + "_hand", self.conn)
         for i in range(len(hand.CARDS)):
-            img = Image.open((str(hand.loc[i,"CARDS"]) + ".png"))
-            display(img)
+            str2 += str_in + str(hand.loc[i,"CARDS"]) + ".png" + str_fin
+        string = str1+str2+str3
+        display(HTML(string))
         print("On the table:")
         table = pd.read_sql("SELECT cards FROM TABLE", self.conn)
         for i in range(len(table.CARDS)):
-            img = Image.open((str(table.loc[i,"CARDS"]) + ".png"))
-            display(img)
+            str2 += str_in + str(table.loc[i,"CARDS"]) + ".png" + str_fin
+        string = str1+str2+str3
+        display(HTML(string))
 
     def card_table(self, num_cards):
         deck = pd.read_sql("SELECT cards FROM deck", self.conn)
@@ -110,24 +137,37 @@ class Bardogame:
         deck = deck.drop(draw_card.index, axis=0)
         deck.to_sql('deck', con=self.db2, if_exists='replace')
         draw_card.to_sql('TABLE', con=self.db2, if_exists='append')
+        str1 = "<table><tr>"
+        str_in = "<td><img src='"
+        str_fin = "'></td>"
+        str3 = "</tr></table>"
+        str2 = ""
         print("On the table:")
         table = pd.read_sql("SELECT cards FROM TABLE", self.conn)
         for i in range(len(table.CARDS)):
-            img = Image.open((str(table.loc[i,"CARDS"]) + ".png"))
-            display(img)
+            str2 += str_in + str(table.loc[i,"CARDS"]) + ".png" + str_fin
+        string = str1+str2+str3
+        display(HTML(string))
 
     def clear_hand(self):
-        stmt = ibm_db.exec_immediate(self.conn, "DROP TABLE " + self.player_name + "_hand")
+        stmt = ibm_db.exec_immediate(self.ibm_db_conn, "DROP TABLE " + self.player_name + "_hand")
 
     def clear_table(self):
-        stmt = ibm_db.exec_immediate(self.conn, "DROP TABLE TABLE")
+        stmt = ibm_db.exec_immediate(self.ibm_db_conn, "DROP TABLE TABLE")
         
     def show_pot(self):
         print("Your pot:")
         pot = pd.read_sql("SELECT cards FROM " + self.player_name + "_pot", self.conn)
+        str1 = "<table><tr>"
+        str_in = "<td><img src='"
+        str_fin = "'></td>"
+        str3 = "</tr></table>"
+        str2 = ""
         for i in range(len(pot.CARDS)):
-            img = Image.open((str(pot.loc[i,"CARDS"]) + ".png"))
-            display(img)
+            str2 += str_in + str(pot.loc[i,"CARDS"]) + ".png" + str_fin
+        string = str1+str2+str3
+        display(HTML(string))
+
         
         
   
