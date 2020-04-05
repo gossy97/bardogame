@@ -54,15 +54,15 @@ class Bardogame:
         hand = pd.read_sql("SELECT cards FROM " + self.player_name + "_hand", self.conn)
         for i in range(len(hand.CARDS)):
             str2 += str_in + str(hand.loc[i,"CARDS"]) + ".png" + str_fin
-        string = str1+str2+str3
-        display(HTML(string))
+        string1 = str1+str2+str3
+        display(HTML(string1))
         str2 = ""
         print("On the table:")
         table = pd.read_sql("SELECT cards FROM TABLE", self.conn)
         for i in range(len(table.CARDS)):
             str2 += str_in + str(table.loc[i,"CARDS"]) + ".png" + str_fin
-        string = str1+str2+str3
-        display(HTML(string))
+        string1 = str1+str2+str3
+        display(HTML(string1))
 
     def play_card(self, card):
         hand = pd.read_sql("SELECT cards FROM " + self.player_name + "_hand", self.conn)
@@ -79,15 +79,15 @@ class Bardogame:
         hand = pd.read_sql("SELECT cards FROM " + self.player_name + "_hand", self.conn)
         for i in range(len(hand.CARDS)):
             str2 += str_in + str(hand.loc[i,"CARDS"]) + ".png" + str_fin
-        string = str1+str2+str3
-        display(HTML(string))
+        string1 = str1+str2+str3
+        display(HTML(string1))
         str2 = ""
         print("On the table:")
         table = pd.read_sql("SELECT cards FROM TABLE", self.conn)
         for i in range(len(table.CARDS)):
             str2 += str_in + str(table.loc[i,"CARDS"]) + ".png" + str_fin
-        string = str1+str2+str3
-        display(HTML(string))
+        string2 = str1+str2+str3
+        display(HTML(string2))
 
 
     def win_card(self, card):
@@ -105,15 +105,15 @@ class Bardogame:
         hand = pd.read_sql("SELECT cards FROM " + self.player_name + "_hand", self.conn)
         for i in range(len(hand.CARDS)):
             str2 += str_in + str(hand.loc[i,"CARDS"]) + ".png" + str_fin
-        string = str1+str2+str3
-        display(HTML(string))
+        string1 = str1+str2+str3
+        display(HTML(string1))
         str2 = ""
         print("On the table:")
         table = pd.read_sql("SELECT cards FROM TABLE", self.conn)
         for i in range(len(table.CARDS)):
             str2 += str_in + str(table.loc[i,"CARDS"]) + ".png" + str_fin
-        string = str1+str2+str3
-        display(HTML(string))
+        string2 = str1+str2+str3
+        display(HTML(string2))
 
     def show(self):
         str1 = "<table><tr>"
@@ -125,15 +125,15 @@ class Bardogame:
         hand = pd.read_sql("SELECT cards FROM " + self.player_name + "_hand", self.conn)
         for i in range(len(hand.CARDS)):
             str2 += str_in + str(hand.loc[i,"CARDS"]) + ".png" + str_fin
-        string = str1+str2+str3
-        display(HTML(string))
+        string1 = str1+str2+str3
+        display(HTML(string1))
         str2 = ""
         print("On the table:")
         table = pd.read_sql("SELECT cards FROM TABLE", self.conn)
         for i in range(len(table.CARDS)):
             str2 += str_in + str(table.loc[i,"CARDS"]) + ".png" + str_fin
-        string = str1+str2+str3
-        display(HTML(string))
+        string2 = str1+str2+str3
+        display(HTML(string2))
 
     def card_table(self, num_cards):
         deck = pd.read_sql("SELECT cards FROM deck", self.conn)
